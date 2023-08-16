@@ -9,17 +9,13 @@ const Login = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    await http.post("/auth", {username, password}) // Error here
-    
+
+    await http.post("/auth/admin", {username, password})
     .then ((res) => {
       console.log("Login Successful!");
-    })
-
-    .then ( () => {
       localStorage.setItem("token", res.data)
-      window.location.href = "/"
+      window.location.href = "/";
     })
-
     .catch ((err) => {
       alert(err.response.data);
     })
